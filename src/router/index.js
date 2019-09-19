@@ -125,7 +125,7 @@ export const currencyRoutes = [
     children: [{
       path: 'index',
       name: 'TakeOut',
-      component: () => import('@/views/home'),
+      component: () => import('@/views/takeout'),
       meta: {
         title: '外卖管理',
         icon: 'el-icon-bicycle'
