@@ -1,0 +1,107 @@
+{
+  "id": "1419093",
+  "name": "pc-cms",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "243340",
+      "name": "仓库",
+      "font_class": "Partner_03",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "830270",
+      "name": "订餐",
+      "font_class": "dingcan",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "944964",
+      "name": "查询",
+      "font_class": "chaxun",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "1243417",
+      "name": "通知",
+      "font_class": "nitification",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "1277683",
+      "name": "菜品",
+      "font_class": "caipin",
+      "unicode": "e64c",
+      "unicode_decimal": 58956
+    },
+    {
+      "icon_id": "1406457",
+      "name": "查询",
+      "font_class": "chaxun1",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "2753319",
+      "name": "消费",
+      "font_class": "xiaofei",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "3615359",
+      "name": "配置",
+      "font_class": "peizhi2",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "5074285",
+      "name": "小卖部",
+      "font_class": "icon-test-copy",
+      "unicode": "e702",
+      "unicode_decimal": 59138
+    },
+    {
+      "icon_id": "6046731",
+      "name": "全屏",
+      "font_class": "quanping",
+      "unicode": "e64a",
+      "unicode_decimal": 58954
+    },
+    {
+      "icon_id": "6724979",
+      "name": "材料",
+      "font_class": "cailiao",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "7834280",
+      "name": "外卖",
+      "font_class": "waimai",
+      "unicode": "e6c4",
+      "unicode_decimal": 59076
+    },
+    {
+      "icon_id": "7862531",
+      "name": "表格",
+      "font_class": "biaoge",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "8925514",
+      "name": "设 置",
+      "font_class": "shezhi",
+      "unicode": "e61f",
+      "unicode_decimal": 58911
+    }
+  ]
+}
