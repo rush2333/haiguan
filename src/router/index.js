@@ -265,7 +265,15 @@ export const currencyRoutes = [
         meta: {
           title: '入库材料管理'
         }
-      }
+      },
+      {
+        path: 'parice-details',
+        name: 'Material-pricedetails',
+        component: () => import('@/views/material/PriceDetails'),
+        meta: {
+          title: '材料价格管理'
+        }
+      },
     ]
   },
   {

@@ -1,16 +1,41 @@
 <template>
   <div>
     <div class="details">
-      消费明细
-      <el-table :data="tableData" style="width: 100%" >
-        <el-table-column prop="date" label="消费时间" width="180"></el-table-column>
-        <el-table-column prop="name" label="姓名" width="180"></el-table-column>
-        <el-table-column prop="address" label="手机号码"></el-table-column>
-        <!-- <el-table-column prop="address" label="消费地点"></el-table-column> -->
-        <!-- <el-table-column prop="address" label="消费类型"></el-table-column>
-        <el-table-column prop="address" label="餐饮"></el-table-column>
-        <el-table-column prop="address" label="菜品"></el-table-column>
-        <el-table-column prop="address" label="金额"></el-table-column> -->
+      <div class="main">
+        <div class="main-header">
+          <div class="nav-title">消费明细</div>
+          <el-divider></el-divider>
+          <div class="select-title">
+            <div v-for="o in 8" :key="o">
+              开始
+              <el-select v-model="value" placeholder="请选择">
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                ></el-option>
+              </el-select>
+            </div>
+          </div>
+          <div class="btn-area">
+            <el-button type="primary">查询</el-button>
+            <el-button type="primary">导出</el-button>
+          </div>
+        </div>
+      </div>
+      <el-table :data="tableData" style="width: 100%" border>
+        <el-table-column prop="id" label="序号" width="50"></el-table-column>
+        <el-table-column prop="create_date" label="下单时间" width="180"></el-table-column>
+        <el-table-column prop="place" label="消费地点"></el-table-column>
+        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="phone" label="手机号码"></el-table-column>
+        <el-table-column prop="type" label="类型"></el-table-column>
+        <el-table-column prop="c_name" label="商品名称"></el-table-column>
+        <el-table-column prop="num" label="商品数量"></el-table-column>
+        <el-table-column prop="price" label="商品金额"></el-table-column>
+        <el-table-column prop="deliver_way" label="配送方式"></el-table-column>
+        <el-table-column prop="note" label="备注" width="300"></el-table-column>
       </el-table>
     </div>
   </div>
@@ -18,33 +43,37 @@
 
 <script>
 export default {
-      data() {
-      return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1511 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1512 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1513弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1514 弄'
-        }]
-      }
-    },
-   
+  data() {
+    return {
+      tableData: []
+    };
+  }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .details {
-  color: blue;
+  .select-title {
+    float: left;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    .el-select {
+      width: 50%;
+    }
+    div {
+      margin-bottom: 5px;
+      width: 25%;
+    }
+  }
+  .btn-area {
+    float: right;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+  }
+  .el-button {
+    margin-bottom: 10px;
+  }
 }
 </style>

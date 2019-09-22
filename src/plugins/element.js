@@ -38,7 +38,9 @@ import {
   Upload,
   Carousel,
   CarouselItem,
-  Link
+  Link,
+  Divider,
+  Image
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -50,6 +52,8 @@ Notification.install = () => {
   Vue.prototype.$notify = Notification
 }
 
+Vue.use(Image)
+Vue.use(Divider)
 Vue.use(Link)
 Vue.use(Button)
 Vue.use(Row)

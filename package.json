@@ -6,11 +6,17 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
+  "proxy":{
+    "/api":"http://canteen.tonglingok.com/api/v1/"
+  },
   "dependencies": {
     "animate.css": "^3.7.2",
+    "connect-timeout": "^1.9.0",
     "core-js": "^2.6.5",
     "driver.js": "^0.9.7",
     "element-ui": "^2.12.0",
+    "http-proxy-middleware": "^0.20.0",
+    "moment": "^2.24.0",
     "screenfull": "^5.0.0",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
