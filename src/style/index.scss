@@ -158,3 +158,13 @@ body {
 .main-content{
   padding: 20px 0;
 }
+/* 解决element-ui的table表格控件表头与内容列不对齐问题 */
+.el-table th.gutter{
+  display: table-cell!important;
+}
+.el-table td,.el-table th{
+  text-align: center !important;
+}
+.hide .el-upload--picture-card {
+  display: none;
+}

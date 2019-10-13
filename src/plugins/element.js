@@ -40,7 +40,11 @@ import {
   CarouselItem,
   Link,
   Divider,
-  Image
+  Image,
+  Radio,
+  RadioGroup,
+  Checkbox,
+  CheckboxGroup,
 } from 'element-ui'
 Message.install = () => {
   Vue.prototype.$message = Message
@@ -52,6 +56,10 @@ Notification.install = () => {
   Vue.prototype.$notify = Notification
 }
 
+Vue.use(Radio);
+Vue.use(RadioGroup);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
 Vue.use(Image)
 Vue.use(Divider)
 Vue.use(Link)

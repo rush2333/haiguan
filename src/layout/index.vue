@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" :class="{ closeBar: opened }">
-    <m-header></m-header>
+    <!-- <m-header></m-header> -->
     <transition
       enter-active-class="animated bounceInRight"
       leave-active-class="animated bounceOutRight"

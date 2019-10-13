@@ -4,16 +4,15 @@ import router from '@/router'
 import store from './store'
 import './plugins/element.js'
 import '@/assets/iconfont/iconfont.css'
-
 import Axios from 'axios';
 
 import Moment from 'moment'
-
-Vue.filter('coverTime',function(data,str){
+Vue.prototype.$moment = Moment;
+Vue.filter('coverTime', function (data, str) {
   return Moment(data).format(str)
 })
-
-Axios.defaults.baseURL = 'http://canteen.tonglingok.com/api/v1/';
+// Axios.defaults.baseURL = 'http://ysxt.e-irobot.com:9230/NewConsume_mealticket/';
+Axios.defaults.withCredentials = true;
 Vue.prototype.$axios = Axios;
 import '@/style/index.scss' // glob scss
 import animated from 'animate.css'

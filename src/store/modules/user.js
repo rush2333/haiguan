@@ -63,25 +63,25 @@ const actions = {
       }
     })
   },
-  _getInfo({ commit }) {
-    return new Promise((resolve, reject) => {
-      getInfo()
-        .then(res => {
-          if (res.code === 0) {
-            const { name, roles, introduce } = res.data
-            commit('SET_ROLES', roles)
-            commit('SET_NAME', name)
-            commit('SET_INTRODUCE', introduce)
-          } else {
-            Message.error(res.msg)
-          }
-          resolve(res.data)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
-  }
+  // _getInfo({ commit }) {
+  //   return new Promise((resolve, reject) => {
+  //     getInfo()
+  //       .then(res => {
+  //         if (res.code === 0) {
+  //           const { name, roles, introduce } = res.data
+  //           commit('SET_ROLES', roles)
+  //           commit('SET_NAME', name)
+  //           commit('SET_INTRODUCE', introduce)
+  //         } else {
+  //           Message.error(res.msg)
+  //         }
+  //         resolve(res.data)
+  //       })
+  //       .catch(error => {
+  //         reject(error)
+  //       })
+  //   })
+  // }
 }
 export default {
   namespaced: true,

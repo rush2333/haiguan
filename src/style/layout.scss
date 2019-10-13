@@ -11,7 +11,7 @@
       height: calc(100% - 50px);
       width: 100%;
       // margin-top: 50px;
-      padding-top: 50px;
+      // padding-top: 50px;
     }
   }
   .pageMain {
@@ -19,7 +19,7 @@
     transition: all 0.3s;
     height: 100%;
     & > div {
-      padding: 36px 30px;
+      // padding: 36px 30px;
       background: $bg-gary;
     }
   }
@@ -31,7 +31,8 @@
 #app {
   .sideBar {
     width: $sideBarWidth;
-    height: calc(100% - 50px);
+    // height: calc(100% - 50px);
+    height: calc(100%);
     background-color: #eee;
     position: fixed;
     bottom: 0;
@@ -128,8 +129,8 @@
     .el-dropdown-menu__item {
       padding: 0 12px;
     }
-    .userDrop_text{
-      color: white
+    .userDrop_text {
+      color: white;
     }
   }
   .headrUl {
@@ -184,12 +185,12 @@
   .closeBar {
     .sideBar {
       width: 64px !important;
-      .el-menu--collapse > .sideItem .el-menu-item [class^='el-icon-'],
+      .el-menu--collapse > .sideItem .el-menu-item [class^="el-icon-"],
       .el-menu--collapse
         > .sideItem
         .el-submenu
         > .el-submenu__title
-        [class^='el-icon-'] {
+        [class^="el-icon-"] {
         margin: 0;
         vertical-align: middle;
         width: 24px;
