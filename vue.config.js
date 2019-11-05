@@ -12,8 +12,8 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      "/NewConsume_mealticket": {
-        target: "http://183.232.32.76:9230"
+      "/NewJMConsume_Mall": {
+        target: "http://yuncanteen.51canteen.com:9230"
       }
     }
   },

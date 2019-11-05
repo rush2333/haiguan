@@ -1,9 +1,5 @@
-const baseURL = 'http://183.232.32.76:9230/NewConsume_mealticket/'
-const token = '123456'
-const userSite = '林花落了春红，太匆匆'
+const baseURL = 'http://183.236.246.246:9230/NewJMConsume_Mall/'
 
 export default {
   baseURL,
-  token,
-  userSite
 }

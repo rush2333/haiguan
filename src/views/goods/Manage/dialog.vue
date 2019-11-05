@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="菜品管理" :visible.sync="isOpen" class="diaForm" width="45%" @close="handleClose">
+  <el-dialog title="商品管理" :visible.sync="isOpen" class="diaForm" width="45%" @close="handleClose">
     <el-form
       ref="cuisineManageForm"
       :model="formdata"
@@ -52,7 +52,7 @@
       <el-form-item label="图片" prop="img_url">
         <div class="imgs">
           <el-upload
-            action="http://ysxt.e-irobot.com:9230/NewConsume_mealticket/Mall_photo.ashx"
+            action="http://yuncanteen.51canteen.com:9230/NewJMConsume_Mall/Mall_photo.ashx"
             list-type="picture-card"
             ref="addUpload"
             name="photo"
@@ -140,7 +140,7 @@ export default {
         getgoods_end
       });
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", this.formdata)
+        .post("/NewJMConsume_Mall/Mall.ashx", this.formdata)
         .then(res => {
           if (res.data.code == "200") {
             this.handleClose();

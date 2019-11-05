@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="manage">
-      <span class="nav-title">菜品管理</span>
+      <span class="nav-title">商品管理</span>
       <el-divider></el-divider>
       <div class="main">
         <div class="main-header">
@@ -73,7 +73,7 @@
         <el-form-item style="display:block" label="图片">
           <el-upload
             ref="editUpload"
-            action="http://ysxt.e-irobot.com:9230/NewConsume_mealticket/Mall_photo.ashx"
+            action="http://yuncanteen.51canteen.com:9230/NewJMConsume_Mall/Mall_photo.ashx"
             name="photo"
             :file-list="fileList"
             list-type="picture-card"
@@ -160,7 +160,7 @@ export default {
     fetchList(page) {
       this.page = page;
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", {
+        .post("/NewJMConsume_Mall/Mall.ashx", {
           types: "load_mall_default",
           page: page
         })
@@ -172,7 +172,7 @@ export default {
     },
     getOptions(types, str, select_options) {
       this.$axios
-        .get("/NewConsume_mealticket/Mall.ashx", {
+        .get("/NewJMConsume_Mall/Mall.ashx", {
           params: {
             types: types
           }
@@ -183,14 +183,18 @@ export default {
           data.forEach(e => {
             select_options.push({ label: e, value: e });
           });
+          select_options.unshift({
+            label: "全部",
+            value: "全部"
+          });
         })
         .catch(err => console.log(err));
     },
-
+    
     queryList() {
       let { goods_type, goods_name, provider } = this.queryForm;
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", {
+        .post("/NewJMConsume_Mall/Mall.ashx", {
           types: "load_mall_default",
           goods_name,
           provider,
@@ -222,7 +226,7 @@ export default {
         types: "edit_goods"
       });
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", this.editFormdata)
+        .post("/NewJMConsume_Mall/Mall.ashx", this.editFormdata)
         .then(res => {
           if (res.data.code == "200") {
             this.$message.success(res.data.msg);
@@ -272,6 +276,7 @@ export default {
     },
 
     getImageUrl(url) {
+      console.log(url);
       return `${GLOBAL.baseURL}${url.replace(/\\/g, "/")}`;
     },
     handleChange(file, fileList) {
@@ -300,7 +305,7 @@ export default {
       })
         .then(() => {
           this.$axios
-            .post("/NewConsume_mealticket/Mall.ashx", {
+            .post("/NewJMConsume_Mall/Mall.ashx", {
               types: "delete_goods",
               postID: item.postID
             })

@@ -11,7 +11,7 @@ Vue.prototype.$moment = Moment;
 Vue.filter('coverTime', function (data, str) {
   return Moment(data).format(str)
 })
-// Axios.defaults.baseURL = 'http://ysxt.e-irobot.com:9230/NewConsume_mealticket/';
+// Axios.defaults.baseURL = 'http://ysxt.e-irobot.com:9230/NewJMConsume_Mall/';
 Axios.defaults.withCredentials = true;
 Vue.prototype.$axios = Axios;
 import '@/style/index.scss' // glob scss

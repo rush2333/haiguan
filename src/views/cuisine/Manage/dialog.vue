@@ -16,7 +16,7 @@
       <el-form-item label="图片" prop="img_url">
         <div class="imgs">
           <el-upload
-            action="http://ysxt.e-irobot.com:9230/NewConsume_mealticket/Mall_photo.ashx"
+            action="http://ysxt.e-irobot.com:9230/NewJMConsume_Mall/Mall_photo.ashx"
             list-type="picture-card"
             name="image"
             :class="{hide:hideUpload}"

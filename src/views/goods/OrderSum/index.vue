@@ -64,7 +64,7 @@
             </el-form-item>
           </el-form>
           <div class="types-radio">
-            <el-radio-group v-model="types" @change="changeTypes">
+            <el-radio-group v-model="formdata.sum_order" @change="changeTypes">
               <el-radio label="tran_dept_sum">按部门进行汇总</el-radio>
               <el-radio label="tran_name_sum">按姓名进行汇总</el-radio>
               <el-radio label="tran_type_sum">按类型进行汇总</el-radio>
@@ -76,19 +76,19 @@
         </div>
       </div>
       <div class="main-content">
-        <el-table style="width:100%">
-          <el-table-column label="序号"></el-table-column>
-          <el-table-column label="统计变量"></el-table-column>
-          <el-table-column label="下单时间"></el-table-column>
-          <el-table-column label="结束时间"></el-table-column>
-          <el-table-column label="姓名"></el-table-column>
-          <el-table-column label="手机号码"></el-table-column>
-          <el-table-column label="部门"></el-table-column>
-          <el-table-column label="类型"></el-table-column>
-          <el-table-column label="商品名称"></el-table-column>
-          <el-table-column label="数量"></el-table-column>
-          <el-table-column label="商品总金额(元)"></el-table-column>
-          <el-table-column label="备注"></el-table-column>
+        <el-table style="width:100%" :data="tableData">
+          <!-- <el-table-column label="序号"></el-table-column> -->
+          <!-- <el-table-column label="统计变量" prop="" ></el-table-column> -->
+          <el-table-column label="下单时间" prop="order_date"></el-table-column>
+          <el-table-column label="结束时间" prop="tran_date"></el-table-column>
+          <el-table-column label="姓名" prop="usr_name"></el-table-column>
+          <el-table-column label="手机号码" prop="phone_no"></el-table-column>
+          <el-table-column label="部门" prop="dept_name"></el-table-column>
+          <el-table-column label="类型" prop="goods_type"></el-table-column>
+          <el-table-column label="商品名称" prop="goods_name"></el-table-column>
+          <el-table-column label="数量" prop="quantity"></el-table-column>
+          <el-table-column label="商品总金额(元)" prop="money"></el-table-column>
+          <el-table-column label="备注" prop="remark"></el-table-column>
         </el-table>
         <el-pagination
           style="width:100%;text-align:center"
@@ -118,10 +118,12 @@ export default {
         dept_name: "",
         state: "",
         goods_name: "",
-        page: 1
+        page: 1,
+        types: "load_tran_info",
+        sum_order: "tran_dept_sum"
       },
+      tableData: [],
       sum: 10,
-      types: "tran_dept_sum",
       orderTypeOptions: [],
       departmentOptions: [],
       statusOptions: []
@@ -136,45 +138,44 @@ export default {
       this.fetchList(1);
     },
     fetchList(page) {
-      this.formdata.page = page;
-      let data = Object.assign({}, this.formdata, { types: this.types });
+      this.formdata.page = page ? page : 1;
+      const data = this.formdata;
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", data)
-        .then(res => console.log(res));
+        .post("/NewJMConsume_Mall/Mall.ashx", data)
+        .then(res => {
+          this.tableData = Array.from(res.data.data);
+          this.sum = res.data.sum;
+        })
+        .catch(err => console.log(err));
     },
     queryList() {
       this.formdata.page = 1;
-      let data = Object.assign({}, this.formdata, { types: this.types });
+      const data = this.formdata;
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", data)
+        .post("/NewJMConsume_Mall/Mall.ashx", data)
         .then(res => {
-          console.log(res);
+          this.sum = res.data.sum;
+          this.tableData = Array.from(res.data.data);
           this.$refs.formdata.resetFields();
         })
         .catch(err => console.log(err));
     },
     getOptions() {
-      let status_options = this.$axios.get("/NewConsume_mealticket/Mall.ashx", {
+      let status_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
         params: {
           types: "get_order_state"
         }
       });
-      let order_type_options = this.$axios.get(
-        "/NewConsume_mealticket/Mall.ashx",
-        {
-          params: {
-            types: "get_order_type"
-          }
+      let order_type_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+        params: {
+          types: "get_order_type"
         }
-      );
-      let department_options = this.$axios.get(
-        "/NewConsume_mealticket/Mall.ashx",
-        {
-          params: {
-            types: "get_order_department"
-          }
+      });
+      let department_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+        params: {
+          types: "get_order_department"
         }
-      );
+      });
       let status = Promise.all([
         status_options,
         order_type_options,
@@ -182,9 +183,18 @@ export default {
       ]);
       status.then(res => {
         let [a, b, c] = res;
-        this.statusOptions = a.data.data;
-        this.orderTypeOptions = b.data.data;
-        this.departmentOptions = c.data.data;
+        this.statusOptions = Array.from(a.data.data);
+        this.statusOptions.unshift({
+          state: "全部"
+        });
+        this.orderTypeOptions = Array.from(b.data.data);
+        this.orderTypeOptions.unshift({
+          goods_type: "全部"
+        });
+        this.departmentOptions = Array.from(c.data.data);
+        this.departmentOptions.unshift({
+          dept_name: "全部"
+        });
       });
     }
   }

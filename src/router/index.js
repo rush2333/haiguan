@@ -58,7 +58,15 @@ export const currencyRoutes = [
         meta: {
           title: '订单汇总'
         }
-      }
+      },
+      {
+        path: 'output',
+        name: 'output',
+        component: () => import('@/views/goods/OutputStatistic'),
+        meta: {
+          title: '进销统计报表'
+        }
+      },
     ]
   },
   // {

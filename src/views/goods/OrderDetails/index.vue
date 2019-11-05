@@ -142,7 +142,7 @@ export default {
     fetchList(page) {
       this.$axios
         .post(
-          "/NewConsume_mealticket/Mall.ashx",
+          "/NewJMConsume_Mall/Mall.ashx",
           Object.assign({}, this.formdata, { page: page || 1 })
         )
         .then(res => {
@@ -153,13 +153,13 @@ export default {
         .catch(err => console.log(err));
     },
     getOptions() {
-      let status_options = this.$axios.get("/NewConsume_mealticket/Mall.ashx", {
+      let status_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
         params: {
           types: "get_order_state"
         }
       });
       let order_type_options = this.$axios.get(
-        "/NewConsume_mealticket/Mall.ashx",
+        "/NewJMConsume_Mall/Mall.ashx",
         {
           params: {
             types: "get_order_type"
@@ -167,7 +167,7 @@ export default {
         }
       );
       let department_options = this.$axios.get(
-        "/NewConsume_mealticket/Mall.ashx",
+        "/NewJMConsume_Mall/Mall.ashx",
         {
           params: {
             types: "get_order_department"
@@ -181,15 +181,24 @@ export default {
       ]);
       status.then(res => {
         let [a, b, c] = res;
-        this.statusOptions = a.data.data;
-        this.orderTypeOptions = b.data.data;
-        this.departmentOptions = c.data.data;
+        this.statusOptions = Array.from(a.data.data);
+        this.statusOptions.unshift({
+          state: "全部"
+        });
+        this.orderTypeOptions = Array.from(b.data.data);
+        this.orderTypeOptions.unshift({
+          goods_type: "全部"
+        });
+        this.departmentOptions = Array.from(c.data.data);
+        this.departmentOptions.unshift({
+          dept_name: "全部"
+        });
       });
     },
 
     queryList() {
       this.$axios
-        .post("/NewConsume_mealticket/Mall.ashx", this.formdata)
+        .post("/NewJMConsume_Mall/Mall.ashx", this.formdata)
         .then(res => {
           // this.$refs.formdata.resetFields();
           this.tableData = res.data.data;
@@ -200,7 +209,7 @@ export default {
     exportExcel() {
       this.$axios
         .post(
-          "/NewConsume_mealticket/Mall.ashx",
+          "/NewJMConsume_Mall/Mall.ashx",
           Object.assign({}, this.formdata, { btn_type: "导出" })
         )
         .then(res => {
