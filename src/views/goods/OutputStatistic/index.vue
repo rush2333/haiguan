@@ -8,7 +8,7 @@
           <el-form-item label="开始">
             <el-date-picker
               value-format="yyyy-MM-dd HH:mm:ss"
-              v-model="formdata.order_date"
+              v-model="formdata.in_time"
               style="width:200px"
               type="datetime"
             ></el-date-picker>
@@ -16,7 +16,7 @@
           <el-form-item label="结束">
             <el-date-picker
               value-format="yyyy-MM-dd HH:mm:ss"
-              v-model="formdata.tran_date"
+              v-model="formdata.out_time"
               style="width:200px"
               type="datetime"
             ></el-date-picker>
@@ -24,7 +24,7 @@
           <el-form-item label="供销商">
             <el-select v-model="formdata.provider">
               <el-option
-                v-for="(item,index) in providerOptions"
+                v-for="(item, index) in providerOptions"
                 :key="index"
                 :label="item.provider"
                 :value="item.provider"
@@ -38,14 +38,28 @@
       <div class="main-content">
         <!-- <el-card style="width:100%"> -->
         <!-- <div slot="header" class="clearfix">日期：{{this.header}}</div> -->
-        <el-table :data="tabledata" style="width:100%" :summary-method="getSummaries" show-summary>
+        <el-table
+          :data="tabledata"
+          style="width:100%"
+          :summary-method="getSummaries"
+          show-summary
+        >
           <el-table-column label="供应商" prop="provider"></el-table-column>
           <el-table-column label="名称 " prop="goods_name"></el-table-column>
-          <el-table-column label="单价(元)" prop="goods_price"></el-table-column>
-          <el-table-column label="总进货量" prop="goods_total"></el-table-column>
+          <el-table-column
+            label="单价(元)"
+            prop="goods_price"
+          ></el-table-column>
+          <el-table-column
+            label="总进货量"
+            prop="goods_total"
+          ></el-table-column>
           <el-table-column label="总销售量" prop="quantity"></el-table-column>
           <el-table-column label="库存量" prop="real_total"></el-table-column>
-          <el-table-column label="总销售额(元)" prop="sales_volume"></el-table-column>
+          <el-table-column
+            label="总销售额(元)"
+            prop="sales_volume"
+          ></el-table-column>
         </el-table>
         <!-- </el-card> -->
         <el-pagination
@@ -69,8 +83,8 @@ export default {
   data() {
     return {
       formdata: {
-        order_date: "",
-        tran_date: "",
+        in_time: "",
+        out_time: "",
         provider: ""
       },
       types: "load_purchase_sale",
@@ -124,7 +138,11 @@ export default {
       this.$axios
         .post(
           "/NewJMConsume_Mall/Mall.ashx",
-          Object.assign({}, this.formdata, { btn_type: "导出" })
+          Object.assign({}, this.formdata, {
+            btn_type: "导出",
+            page: this.page,
+            types: this.types
+          })
         )
         .then(res => {
           window.open(res.data.data);
@@ -138,8 +156,8 @@ export default {
         .then(res => {
           this.providerOptions = Array.from(res.data.data);
           this.providerOptions.unshift({
-            provider:"全部"
-          })
+            provider: "全部"
+          });
         })
         .catch(err => console.log(err));
     },

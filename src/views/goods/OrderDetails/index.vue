@@ -10,8 +10,8 @@
               <el-form-item label="姓名" prop="usr_name">
                 <el-input placeholder="请输入姓名" v-model="formdata.usr_name"></el-input>
               </el-form-item>
-              <el-form-item label="手机号码" prop="phone_num">
-                <el-input placeholder="请输入号码" v-model="formdata.phone_num"></el-input>
+              <el-form-item label="手机号码" prop="phone_no">
+                <el-input placeholder="请输入号码" v-model="formdata.phone_no"></el-input>
               </el-form-item>
               <el-form-item label="商品类型" prop="goods_type">
                 <el-select v-model="formdata.goods_type" placeholder="请选择类型">
@@ -114,7 +114,7 @@ export default {
       formdata: {
         types: "load_order_ask",
         usr_name: "",
-        phone_num: "",
+        phone_no: "",
         order_date: "",
         update_date: "",
         goods_name: "",

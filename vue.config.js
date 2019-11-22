@@ -13,7 +13,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       "/NewJMConsume_Mall": {
-        target: "http://yuncanteen.51canteen.com:9230"
+        target: "http://183.236.246.246:9230"
       }
     }
   },

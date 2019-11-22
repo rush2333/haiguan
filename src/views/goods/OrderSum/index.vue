@@ -7,7 +7,10 @@
         <div class="select-title">
           <el-form :inline="true" :model="formdata" ref="formdata">
             <el-form-item label="姓名" prop="usr_name">
-              <el-input placeholder="请输入姓名" v-model="formdata.usr_name"></el-input>
+              <el-input
+                placeholder="请输入姓名"
+                v-model="formdata.usr_name"
+              ></el-input>
             </el-form-item>
             <el-form-item label="商品类型" prop="goods_type">
               <el-select v-model="formdata.goods_type" placeholder="请选择类型">
@@ -37,21 +40,24 @@
                 type="datetime"
               ></el-date-picker>
             </el-form-item>
-            <el-form-item label="结束时间" prop="update_date">
+            <el-form-item label="结束时间" prop="tran_date">
               <el-date-picker
                 value-format="yyyy-MM-dd HH:mm:ss"
-                v-model="formdata.update_date"
+                v-model="formdata.tran_date"
                 style="width:200px"
                 type="datetime"
               ></el-date-picker>
             </el-form-item>
             <el-form-item label="商品名称" prop="goods_name">
-              <el-input placeholder="请输入名称" v-model="formdata.goods_name"></el-input>
+              <el-input
+                placeholder="请输入名称"
+                v-model="formdata.goods_name"
+              ></el-input>
             </el-form-item>
             <el-form-item label="状态" prop="state">
               <el-select v-model="formdata.state" placeholder="请选择状态">
                 <el-option
-                  v-for="(item,index) in statusOptions"
+                  v-for="(item, index) in statusOptions"
                   :key="index"
                   :label="item.state"
                   :value="item.state"
@@ -60,17 +66,17 @@
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="queryList">查询</el-button>
-              <el-button type="primary" @click="changeTypes">导出</el-button>
+              <el-button type="primary" @click="exportExcel">导出</el-button>
             </el-form-item>
           </el-form>
           <div class="types-radio">
             <el-radio-group v-model="formdata.sum_order" @change="changeTypes">
-              <el-radio label="tran_dept_sum">按部门进行汇总</el-radio>
-              <el-radio label="tran_name_sum">按姓名进行汇总</el-radio>
-              <el-radio label="tran_type_sum">按类型进行汇总</el-radio>
-              <el-radio label="tran_goods_sum">按商品进行汇总</el-radio>
-              <el-radio label="tran_state_sum">按状态进行汇总</el-radio>
-              <el-radio label="tran_provider_sum">按供应商进行汇总</el-radio>
+              <el-radio label="dept_name">按部门进行汇总</el-radio>
+              <el-radio label="usr_name">按姓名进行汇总</el-radio>
+              <el-radio label="goods_type">按类型进行汇总</el-radio>
+              <el-radio label="goods_name">按商品进行汇总</el-radio>
+              <el-radio label="state">按状态进行汇总</el-radio>
+              <el-radio label="provider">按供应商进行汇总</el-radio>
             </el-radio-group>
           </div>
         </div>
@@ -87,7 +93,10 @@
           <el-table-column label="类型" prop="goods_type"></el-table-column>
           <el-table-column label="商品名称" prop="goods_name"></el-table-column>
           <el-table-column label="数量" prop="quantity"></el-table-column>
-          <el-table-column label="商品总金额(元)" prop="money"></el-table-column>
+          <el-table-column
+            label="商品总金额(元)"
+            prop="money"
+          ></el-table-column>
           <el-table-column label="备注" prop="remark"></el-table-column>
         </el-table>
         <el-pagination
@@ -120,7 +129,7 @@ export default {
         goods_name: "",
         page: 1,
         types: "load_tran_info",
-        sum_order: "tran_dept_sum"
+        sum_order: "dept_name"
       },
       tableData: [],
       sum: 10,
@@ -196,6 +205,17 @@ export default {
           dept_name: "全部"
         });
       });
+    },
+    exportExcel() {
+      this.$axios
+        .post(
+          "/NewJMConsume_Mall/Mall.ashx",
+          Object.assign({}, this.formdata, { btn_type: "导出" })
+        )
+        .then(res => {
+          window.open(res.data.data);
+        })
+        .catch(err => console.log(err));
     }
   }
 };

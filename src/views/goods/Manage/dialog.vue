@@ -52,7 +52,7 @@
       <el-form-item label="图片" prop="img_url">
         <div class="imgs">
           <el-upload
-            action="http://yuncanteen.51canteen.com:9230/NewJMConsume_Mall/Mall_photo.ashx"
+            action="http://183.236.246.246:9230/NewJMConsume_Mall/Mall_photo.ashx"
             list-type="picture-card"
             ref="addUpload"
             name="photo"

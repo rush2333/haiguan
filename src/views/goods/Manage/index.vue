@@ -73,7 +73,7 @@
         <el-form-item style="display:block" label="图片">
           <el-upload
             ref="editUpload"
-            action="http://yuncanteen.51canteen.com:9230/NewJMConsume_Mall/Mall_photo.ashx"
+            action="http://183.236.246.246:9230/NewJMConsume_Mall/Mall_photo.ashx"
             name="photo"
             :file-list="fileList"
             list-type="picture-card"
