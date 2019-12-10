@@ -150,7 +150,7 @@ export default {
       this.formdata.page = page ? page : 1;
       const data = this.formdata;
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", data)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", data)
         .then(res => {
           this.tableData = Array.from(res.data.data);
           this.sum = res.data.sum;
@@ -161,7 +161,7 @@ export default {
       this.formdata.page = 1;
       const data = this.formdata;
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", data)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", data)
         .then(res => {
           this.sum = res.data.sum;
           this.tableData = Array.from(res.data.data);
@@ -170,17 +170,17 @@ export default {
         .catch(err => console.log(err));
     },
     getOptions() {
-      let status_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+      let status_options = this.$axios.get("/NewJMConsumeYDSJL/Mall.ashx", {
         params: {
           types: "get_order_state"
         }
       });
-      let order_type_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+      let order_type_options = this.$axios.get("/NewJMConsumeYDSJL/Mall.ashx", {
         params: {
           types: "get_order_type"
         }
       });
-      let department_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+      let department_options = this.$axios.get("/NewJMConsumeYDSJL/Mall.ashx", {
         params: {
           types: "get_order_department"
         }
@@ -209,7 +209,7 @@ export default {
     exportExcel() {
       this.$axios
         .post(
-          "/NewJMConsume_Mall/Mall.ashx",
+          "/NewJMConsumeYDSJL/Mall.ashx",
           Object.assign({}, this.formdata, { btn_type: "导出" })
         )
         .then(res => {

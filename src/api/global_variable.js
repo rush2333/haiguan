@@ -1,4 +1,4 @@
-const baseURL = 'http://183.236.246.246:9230/NewJMConsume_Mall/'
+const baseURL = 'http://yuncanteen.51canteen.com:9230/NewJMConsumeYDSJL/'
 
 export default {
   baseURL,

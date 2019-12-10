@@ -108,7 +108,7 @@ export default {
         page: page || this.page
       });
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", data)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", data)
         .then(res => {
           this.headers = `${this.$moment(this.formdata.order_date)}——${
             this.formdata.tran_date
@@ -125,7 +125,7 @@ export default {
         page: this.page
       });
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", data)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", data)
         .then(res => {
           this.tabledata = Array.from(res.data.data);
           this.sum = res.data.sum;
@@ -137,7 +137,7 @@ export default {
     exportExcel() {
       this.$axios
         .post(
-          "/NewJMConsume_Mall/Mall.ashx",
+          "/NewJMConsumeYDSJL/Mall.ashx",
           Object.assign({}, this.formdata, {
             btn_type: "导出",
             page: this.page,
@@ -152,7 +152,7 @@ export default {
 
     getProviderOptions() {
       this.$axios
-        .get("/NewJMConsume_Mall/Mall.ashx?types=get_ps_provider")
+        .get("/NewJMConsumeYDSJL/Mall.ashx?types=get_ps_provider")
         .then(res => {
           this.providerOptions = Array.from(res.data.data);
           this.providerOptions.unshift({

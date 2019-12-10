@@ -73,7 +73,7 @@
         <el-form-item style="display:block" label="图片">
           <el-upload
             ref="editUpload"
-            action="http://183.236.246.246:9230/NewJMConsume_Mall/Mall_photo.ashx"
+            action="/NewJMConsumeYDSJL/Mall_photo.ashx"
             name="photo"
             :file-list="fileList"
             list-type="picture-card"
@@ -160,7 +160,7 @@ export default {
     fetchList(page) {
       this.page = page;
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", {
+        .post("/NewJMConsumeYDSJL/Mall.ashx", {
           types: "load_mall_default",
           page: page
         })
@@ -172,7 +172,7 @@ export default {
     },
     getOptions(types, str, select_options) {
       this.$axios
-        .get("/NewJMConsume_Mall/Mall.ashx", {
+        .get("/NewJMConsumeYDSJL/Mall.ashx", {
           params: {
             types: types
           }
@@ -194,7 +194,7 @@ export default {
     queryList() {
       let { goods_type, goods_name, provider } = this.queryForm;
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", {
+        .post("/NewJMConsumeYDSJL/Mall.ashx", {
           types: "load_mall_default",
           goods_name,
           provider,
@@ -226,7 +226,7 @@ export default {
         types: "edit_goods"
       });
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", this.editFormdata)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", this.editFormdata)
         .then(res => {
           if (res.data.code == "200") {
             this.$message.success(res.data.msg);
@@ -305,7 +305,7 @@ export default {
       })
         .then(() => {
           this.$axios
-            .post("/NewJMConsume_Mall/Mall.ashx", {
+            .post("/NewJMConsumeYDSJL/Mall.ashx", {
               types: "delete_goods",
               postID: item.postID
             })

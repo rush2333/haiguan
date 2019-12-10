@@ -142,7 +142,7 @@ export default {
     fetchList(page) {
       this.$axios
         .post(
-          "/NewJMConsume_Mall/Mall.ashx",
+          "/NewJMConsumeYDSJL/Mall.ashx",
           Object.assign({}, this.formdata, { page: page || 1 })
         )
         .then(res => {
@@ -153,13 +153,13 @@ export default {
         .catch(err => console.log(err));
     },
     getOptions() {
-      let status_options = this.$axios.get("/NewJMConsume_Mall/Mall.ashx", {
+      let status_options = this.$axios.get("/NewJMConsumeYDSJL/Mall.ashx", {
         params: {
           types: "get_order_state"
         }
       });
       let order_type_options = this.$axios.get(
-        "/NewJMConsume_Mall/Mall.ashx",
+        "/NewJMConsumeYDSJL/Mall.ashx",
         {
           params: {
             types: "get_order_type"
@@ -167,7 +167,7 @@ export default {
         }
       );
       let department_options = this.$axios.get(
-        "/NewJMConsume_Mall/Mall.ashx",
+        "/NewJMConsumeYDSJL/Mall.ashx",
         {
           params: {
             types: "get_order_department"
@@ -198,7 +198,7 @@ export default {
 
     queryList() {
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", this.formdata)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", this.formdata)
         .then(res => {
           // this.$refs.formdata.resetFields();
           this.tableData = res.data.data;
@@ -209,7 +209,7 @@ export default {
     exportExcel() {
       this.$axios
         .post(
-          "/NewJMConsume_Mall/Mall.ashx",
+          "/NewJMConsumeYDSJL/Mall.ashx",
           Object.assign({}, this.formdata, { btn_type: "导出" })
         )
         .then(res => {

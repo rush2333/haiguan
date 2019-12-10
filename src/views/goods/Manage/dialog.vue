@@ -52,7 +52,7 @@
       <el-form-item label="图片" prop="img_url">
         <div class="imgs">
           <el-upload
-            action="http://183.236.246.246:9230/NewJMConsume_Mall/Mall_photo.ashx"
+            action="/NewJMConsumeYDSJL/Mall_photo.ashx"
             list-type="picture-card"
             ref="addUpload"
             name="photo"
@@ -140,7 +140,7 @@ export default {
         getgoods_end
       });
       this.$axios
-        .post("/NewJMConsume_Mall/Mall.ashx", this.formdata)
+        .post("/NewJMConsumeYDSJL/Mall.ashx", this.formdata)
         .then(res => {
           if (res.data.code == "200") {
             this.handleClose();

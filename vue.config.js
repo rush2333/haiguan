@@ -12,7 +12,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     proxy: {
-      "/NewJMConsume_Mall": {
+      "/NewJMConsumeYDSJL": {
         target: "http://183.236.246.246:9230"
       }
     }
