@@ -1,5 +1,11 @@
 <template>
-  <el-dialog title="商品管理" :visible.sync="isOpen" class="diaForm" width="45%" @close="handleClose">
+  <el-dialog
+    title="商品管理"
+    :visible.sync="isOpen"
+    class="diaForm"
+    width="45%"
+    @close="handleClose"
+  >
     <el-form
       ref="cuisineManageForm"
       :model="formdata"
@@ -105,7 +111,7 @@ export default {
       limit: 1,
       pickerBeginDateBefore: {
         disabledDate(time) {
-          return time.getTime() <= Date.now();
+          return time.getTime() <= Date.now() - 3600*1000 * 24;
         }
       }
     };

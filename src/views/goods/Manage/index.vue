@@ -225,6 +225,7 @@ export default {
       Object.assign(this.editFormdata, {
         types: "edit_goods"
       });
+      this.editFormdata.PicPath = this.editFormdata.PicPath.replace(/\\/g, "\\\\"); //转义url
       this.$axios
         .post("/NewJMConsumeYDSJL/Mall.ashx", this.editFormdata)
         .then(res => {

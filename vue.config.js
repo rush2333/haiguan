@@ -13,7 +13,9 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       "/NewJMConsumeYDSJL": {
-        target: "http://183.236.246.246:9230"
+        target: "http://183.236.246.246:9230/NewJMConsumeYDSJL",
+        ws: true,
+        changeOrigin:true
       }
     }
   },

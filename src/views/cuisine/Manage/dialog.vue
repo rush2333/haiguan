@@ -16,7 +16,7 @@
       <el-form-item label="图片" prop="img_url">
         <div class="imgs">
           <el-upload
-            action="/NewJMConsumeYDSJL/Mall_photo.ashx"
+            action="/Mall_photo.ashx"
             list-type="picture-card"
             name="image"
             :class="{hide:hideUpload}"
